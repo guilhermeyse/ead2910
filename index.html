@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gangplank - O Rei Pirata de Bilgewater</title>
+
+  <!-- Fonte do Google Fonts para o título (se não carregar, o navegador usa a fonte reserva). -->
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+
+  <!-- Vincula o arquivo CSS (style.css) a esta página. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== TOPO (hero): título, texto e imagem lado a lado ===== -->
+  <header class="hero">
+    <div class="hero-texto">
+      <!-- Título principal da página (h1). -->
+      <h1>Gangplank</h1>
+      <p class="subtitulo">O Flagelo dos Mares (em inglês: The Saltwater Scourge)</p>
+
+      <!-- Primeiro parágrafo (p): apresentação do personagem. -->
+      <p>
+        Gangplank é um campeão do jogo <strong>League of Legends</strong>. Ele é um
+        pirata cruel e temido da cidade de <strong>Bilgewater</strong>, um porto
+        onde vale tudo por dinheiro. No jogo, ele luta com espada, pistola e muita
+        pólvora.
+      </p>
+
+      <!-- Segundo parágrafo (p): resumo da história. -->
+      <p>
+        Gangplank virou capitão do navio negro <strong>Dead Pool</strong> e líder
+        dos piratas <strong>Jagged Hooks</strong>. Ele chegou a ser chamado de Rei
+        de Bilgewater, até que uma antiga inimiga resolveu acabar com o seu reinado.
+      </p>
+    </div>
+
+    <!-- Imagem (img) do Gangplank, vinda da LoL Wiki (arte da Riot Games).
+         O atributo alt descreve a imagem caso ela não carregue.
+         O onerror troca para o meu desenho (imagem.svg) se o link da internet falhar. -->
+    <img src="https://static.wikia.nocookie.net/leagueoflegends/images/f/f0/Gangplank_OriginalCentered.jpg/revision/latest?cb=20180414202111"
+         alt="Arte oficial do campeão Gangplank, o pirata de Bilgewater"
+         onerror="this.onerror=null; this.src='imagem.svg';">
+  </header>
+
+  <main>
+
+    <!-- ===== FICHA RÁPIDA: quatro cartões com dados do personagem ===== -->
+    <section>
+      <h2>Ficha rápida</h2>
+      <div class="grade">
+        <div class="cartao">
+          <span class="rotulo">Região</span>
+          <p>Bilgewater, Ilhas da Serpente</p>
+        </div>
+        <div class="cartao">
+          <span class="rotulo">Navio</span>
+          <p>Dead Pool</p>
+        </div>
+        <div class="cartao">
+          <span class="rotulo">Tripulação</span>
+          <p>Jagged Hooks</p>
+        </div>
+        <div class="cartao">
+          <span class="rotulo">Maior inimiga</span>
+          <p>Miss Fortune</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HISTÓRIA: lista (ul/li) estilizada como linha do tempo ===== -->
+    <section>
+      <h2>A história dele</h2>
+      <ul class="linha-do-tempo">
+        <li><strong>1.</strong> Nasceu e cresceu em Bilgewater, nas Ilhas da Serpente.</li>
+        <li><strong>2.</strong> Ficou conhecido por ser violento e ambicioso, e tomou o controle da cidade.</li>
+        <li><strong>3.</strong> Foi derrotado por Miss Fortune, que explodiu o navio dele diante de todos.</li>
+        <li><strong>4.</strong> Todos achavam que ele estava morto, mas ele sobreviveu à explosão.</li>
+        <li><strong>5.</strong> Voltou depois para tentar recuperar o que era dele.</li>
+      </ul>
+    </section>
+
+    <!-- ===== INTERAÇÕES: três cartões com os personagens ligados a ele ===== -->
+    <section>
+      <h2>Interações com outros personagens</h2>
+      <div class="grade tres">
+        <div class="cartao">
+          <span class="rotulo inimigo">Inimiga</span>
+          <h3>Miss Fortune</h3>
+          <p>Queria vingança e foi quem acabou com o reinado dele em Bilgewater.</p>
+        </div>
+        <div class="cartao">
+          <span class="rotulo passado">Passado em comum</span>
+          <h3>Illaoi</h3>
+          <p>A sacerdotisa do kraken. Foi parceira dele no passado e depois seguiu um caminho diferente.</p>
+        </div>
+        <div class="cartao">
+          <span class="rotulo perigo">Ameaça</span>
+          <h3>Névoa Negra</h3>
+          <p>Uma névoa assustadora que ameaça Bilgewater e envolve o destino dele no jogo Ruined King.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HABILIDADES: 5 botões; ao clicar, o JavaScript mostra a descrição ===== -->
+    <section>
+      <h2>Como ele luta no jogo</h2>
+      <p class="dica">Clique em uma habilidade para ver o que ela faz.</p>
+
+      <!-- Botões das habilidades (button). Cada um chama mostrarHabilidade() com uma letra. -->
+      <div class="botoes-habilidade">
+        <button onclick="mostrarHabilidade('P')">Passiva</button>
+        <button onclick="mostrarHabilidade('Q')">Q</button>
+        <button onclick="mostrarHabilidade('W')">W</button>
+        <button onclick="mostrarHabilidade('E')">E</button>
+        <button onclick="mostrarHabilidade('R')">R</button>
+      </div>
+
+      <!-- Painel onde o JavaScript escreve o nome e a descrição da habilidade. -->
+      <div id="painelHabilidade" class="painel">
+        <h3 id="nomeHabilidade">Escolha uma habilidade</h3>
+        <p id="descHabilidade">Clique em um dos botões acima.</p>
+      </div>
+    </section>
+
+    <!-- ===== CURIOSIDADES: botões que mostram, trocam e colorem a caixa ===== -->
+    <section>
+      <h2>Curiosidades</h2>
+
+      <!-- Botão 1: chama mostrarOcultar() do script.js. -->
+      <button id="btnCuriosidade" onclick="mostrarOcultar()">Mostrar curiosidades</button>
+
+      <!-- Botão 2: chama proximoFato() do script.js. -->
+      <button id="btnFato" onclick="proximoFato()">Próximo fato</button>
+
+      <!-- Botão 3: chama mudarCor() do script.js. -->
+      <button id="btnCor" onclick="mudarCor()">Mudar cor da caixa</button>
+
+      <!-- Caixa que começa escondida (classe "escondido") e é controlada pelo JavaScript. -->
+      <div id="caixa" class="escondido">
+        <p id="textoFato">
+          Curiosidade: em 2015, a Riot "matou" o Gangplank na história do jogo, algo que nunca tinha acontecido com um campeão.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer>
+    <p>Trabalho de estudo - ADS, 1ª fase - Programação Web. Gangplank, League of Legends e a imagem do personagem pertencem à Riot Games.</p>
+  </footer>
+
+  <!-- Vincula o arquivo JavaScript (script.js). Fica no final do body para
+       que a página já esteja carregada quando o script for lido. -->
+  <script src="script.js"></script>
+</body>
+</html>

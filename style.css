@@ -1,0 +1,286 @@
+/* ===== VARIÁVEIS: cores guardadas em nomes para reutilizar no CSS ===== */
+:root {
+  --fundo: #0f3d36;        /* verde-água escuro (cor principal) */
+  --cartao: #1b5a4f;       /* verde um pouco mais claro para os cartões */
+  --laranja: #ff5a36;      /* cor de destaque (fogo) */
+  --dourado: gold;         /* cor de destaque (tesouro) */
+  --texto: #eef7f3;        /* cor do texto comum */
+}
+
+/* Tira as margens padrão do navegador e faz o tamanho dos elementos
+   incluir o espaçamento interno (box-sizing). */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Define o wallpaper (imagem de fundo) da página.
+   - A primeira camada é um degradê verde escuro semitransparente, para o texto ficar legível.
+   - A segunda camada é a imagem em si, vinda de um link da internet.
+   - background-color é a cor usada caso a imagem não carregue.
+   - background-size: cover faz a imagem cobrir a tela toda.
+   - background-position: center deixa a imagem centralizada.
+   - background-attachment: fixed deixa o fundo parado enquanto a página rola. */
+body {
+  background-color: var(--fundo);
+  background-image:
+    linear-gradient(180deg, rgba(6, 35, 30, 0.72), rgba(15, 61, 54, 0.82)),
+    url("https://wallpaperaccess.com/full/6535521.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--texto);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* ===== TOPO (hero): texto e imagem lado a lado com flexbox ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 20px;
+  background: radial-gradient(circle at 70% 30%, #2f8f7a 0%, transparent 60%);
+  border-bottom: 3px solid var(--dourado);
+}
+
+/* Limita a largura do texto do topo. */
+.hero-texto {
+  max-width: 520px;
+}
+
+/* Altera a cor, o tamanho e a fonte do título principal.
+   text-shadow cria uma sombra brilhante, como se fosse fogo. */
+h1 {
+  color: var(--laranja);
+  font-family: 'Pirata One', Impact, sans-serif;
+  font-size: 80px;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255, 90, 54, 0.6);
+}
+
+/* Subtítulo logo abaixo do h1: cor dourada, itálico e menor. */
+.subtitulo {
+  color: var(--dourado);
+  font-size: 18px;
+  font-style: italic;
+  margin: 8px 0 20px 0;
+}
+
+/* Muda o tamanho e a cor dos parágrafos. */
+p {
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+
+/* Deixa as palavras em negrito (strong) na cor laranja clara. */
+strong {
+  color: #ff9d5c;
+}
+
+/* Define o tamanho da imagem, bordas arredondadas, borda dourada e sombra.
+   (propriedades extras escolhidas por mim: border-radius e box-shadow). */
+img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 20px;
+  border: 3px solid var(--dourado);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Conteúdo principal centralizado, com largura máxima. */
+main {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Espaço entre as seções. */
+section {
+  margin: 50px 0;
+  text-align: center;
+}
+
+/* Títulos das seções: dourados, com uma linha laranja embaixo. */
+h2 {
+  color: var(--dourado);
+  font-size: 30px;
+  margin-bottom: 25px;
+  display: inline-block;
+  border-bottom: 3px solid var(--laranja);
+  padding-bottom: 5px;
+}
+
+/* Títulos dos cartões. */
+h3 {
+  color: var(--dourado);
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+/* ===== GRADE: organiza os cartões em colunas automáticas (CSS Grid) ===== */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+}
+
+/* A grade de interações usa colunas um pouco maiores. */
+.grade.tres {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Cartão: fundo, borda arredondada, sombra e animação ao passar o mouse. */
+.cartao {
+  background-color: var(--cartao);
+  border-radius: 14px;
+  padding: 20px;
+  border-top: 4px solid var(--laranja);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+/* Quando o mouse passa por cima, o cartão sobe um pouco. */
+.cartao:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.55);
+}
+
+/* Dentro dos cartões o parágrafo fica menor e sem espaço sobrando. */
+.cartao p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+/* Etiqueta pequena no topo do cartão (ex.: "Inimiga"). */
+.rotulo {
+  display: inline-block;
+  background-color: var(--dourado);
+  color: #1a1a1a;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+/* Cores diferentes para cada tipo de etiqueta. */
+.rotulo.inimigo { background-color: #ff5a36; color: white; }
+.rotulo.passado { background-color: #a78bfa; color: #1a1a1a; }
+.rotulo.perigo  { background-color: #9aa5b1; color: #1a1a1a; }
+
+/* ===== LINHA DO TEMPO: remove os marcadores da lista e cria uma linha vertical ===== */
+.linha-do-tempo {
+  list-style: none;
+  padding: 0 0 0 25px;
+  max-width: 700px;
+  margin: 0 auto;
+  border-left: 4px solid var(--laranja);
+  text-align: left;
+}
+
+/* Cada item da lista vira um bloco com fundo e bordas arredondadas. */
+.linha-do-tempo li {
+  background-color: var(--cartao);
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  transition: background-color 0.25s;
+}
+
+/* Muda a cor do item quando o mouse passa por cima. */
+.linha-do-tempo li:hover {
+  background-color: #26705f;
+}
+
+/* Texto de dica, mais claro e menor. */
+.dica {
+  font-size: 15px;
+  color: #b5ddd1;
+}
+
+/* ===== BOTÕES: personaliza a aparência de todos os botões ===== */
+/* Cor de fundo, cor do texto, tamanho da fonte, espaçamento interno,
+   sem borda, bordas arredondadas, "mãozinha" no mouse e animação suave. */
+button {
+  background: linear-gradient(135deg, #c0392b, #ff5a36);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Quando o mouse passa por cima, o botão cresce e ganha um brilho. */
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(255, 90, 54, 0.8);
+}
+
+/* Botão da habilidade que está selecionada (classe adicionada pelo JavaScript). */
+button.ativo {
+  background: linear-gradient(135deg, #b8860b, gold);
+  color: #1a1a1a;
+}
+
+/* Espaço abaixo da linha de botões das habilidades. */
+.botoes-habilidade {
+  margin: 15px 0 25px 0;
+}
+
+/* Painel onde aparece a descrição da habilidade. */
+.painel {
+  background-color: var(--cartao);
+  border: 2px solid var(--dourado);
+  border-radius: 14px;
+  padding: 25px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Caixa de curiosidades. O JavaScript muda a cor de fundo dela com o botão "Mudar cor da caixa". */
+#caixa {
+  background-color: var(--cartao);
+  border: 2px solid var(--dourado);
+  border-radius: 14px;
+  padding: 20px;
+  max-width: 650px;
+  margin: 25px auto 0 auto;
+}
+
+/* Classe usada para esconder a caixa (display: none).
+   O JavaScript adiciona e remove essa classe. */
+.escondido {
+  display: none;
+}
+
+/* ===== RODAPÉ ===== */
+footer {
+  text-align: center;
+  padding: 25px;
+  background-color: #06231f;
+  border-top: 3px solid var(--dourado);
+}
+
+footer p {
+  font-size: 14px;
+  color: #b5ddd1;
+  margin: 0;
+}
+
+/* ===== CELULAR: em telas pequenas o topo vira uma coluna só ===== */
+@media (max-width: 800px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  h1 {
+    font-size: 56px;
+  }
+}
